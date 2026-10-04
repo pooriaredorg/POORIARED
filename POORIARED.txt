@@ -1,15 +1,879 @@
-vless://82bff4b6-dd3e-4fe7-8c40-749b3f33138a@kalesportshomal.up.railway.app:443?type=ws&security=tls&fp=chrome&sni=kalesportshomal.up.railway.app&path=/ws/82bff4b6-dd3e-4fe7-8c40-749b3f33138a&host=kalesportshomal.up.railway.app&alpn=http/1.1#%F0%9F%A5%B7%F0%9F%8F%BB%F0%9F%A4%ACPOORIAMRED1
+{
+  "dns" : {
+    "disableCache" : false,
+    "disableFallback" : false,
+    "disableFallbackIfMatch" : false,
+    "hosts" : {
+      "cloudflare-dns.com" : [
+        "104.16.248.249",
+        "104.16.249.249",
+        "2606:4700::6810:f8f9",
+        "2606:4700::6810:f9f9"
+      ],
+      "common.dot.dns.yandex.net" : [
+        "77.88.8.8",
+        "77.88.8.1",
+        "2a02:6b8::feed:0ff",
+        "2a02:6b8:0:1::feed:0ff"
+      ],
+      "dns.alidns.com" : [
+        "223.5.5.5",
+        "223.6.6.6",
+        "2400:3200::1",
+        "2400:3200:baba::1"
+      ],
+      "dns.cloudflare.com" : [
+        "104.16.132.229",
+        "104.16.133.229",
+        "2606:4700::6810:84e5",
+        "2606:4700::6810:85e5"
+      ],
+      "dns.google" : [
+        "8.8.8.8",
+        "8.8.4.4",
+        "2001:4860:4860::8888",
+        "2001:4860:4860::8844"
+      ],
+      "dns.quad9.net" : [
+        "9.9.9.9",
+        "149.112.112.112",
+        "2620:fe::fe",
+        "2620:fe::9"
+      ],
+      "domain:googleapis.cn" : "googleapis.com",
+      "dot.pub" : [
+        "1.12.12.12",
+        "120.53.53.53"
+      ],
+      "one.one.one.one" : [
+        "1.1.1.1",
+        "1.0.0.1",
+        "2606:4700:4700::1111",
+        "2606:4700:4700::1001"
+      ],
+      "www.speedtest.net" : "240.0.0.15"
+    },
+    "queryStrategy" : "UseIP",
+    "servers" : [
+      "1.1.1.1"
+    ],
+    "tag" : "7FBE7B5C-62DD-483A-BEC8-C2A78611D573"
+  },
+  "inbounds" : [
+    {
+      "listen" : "127.0.0.1",
+      "port" : 62085,
+      "protocol" : "socks",
+      "settings" : {
+        "auth" : "noauth",
+        "udp" : true,
+        "userLevel" : 8
+      },
+      "sniffing" : {
+        "destOverride" : [
+          "tls",
+          "http",
+          "quic"
+        ],
+        "enabled" : true,
+        "metadataOnly" : false,
+        "routeOnly" : false
+      },
+      "tag" : "socks"
+    },
+    {
+      "listen" : "127.0.0.1",
+      "port" : 62086,
+      "protocol" : "socks",
+      "settings" : {
+        "auth" : "noauth",
+        "udp" : true,
+        "userLevel" : 8
+      },
+      "tag" : "directSocks"
+    }
+  ],
+  "log" : {
+    "access" : "/private/var/mobile/Containers/Shared/AppGroup/979E9E00-FD9D-40E5-8A0C-86B7202C6120/access.log",
+    "dnsLog" : false,
+    "error" : "/private/var/mobile/Containers/Shared/AppGroup/979E9E00-FD9D-40E5-8A0C-86B7202C6120/error.log",
+    "loglevel" : "warning"
+  },
+  "outbounds" : [
+    {
+      "mux" : {
+        "concurrency" : -1,
+        "enabled" : false
+      },
+      "protocol" : "VLESS",
+      "settings" : {
+        "vnext" : [
+          {
+            "address" : "www.speedtest.net",
+            "port" : 443,
+            "users" : [
+              {
+                "encryption" : "none",
+                "id" : "91eae6c4-f4de-b91c-3a81-9ac2e3000b99",
+                "level" : 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings" : {
+        "network" : "ws",
+        "security" : "tls",
+        "sockopt" : {
+          "domainStrategy" : "UseIP",
+          "happyEyeballs" : {
+            "interleave" : 2,
+            "maxConcurrentTry" : 4,
+            "prioritizeIPv6" : true,
+            "tryDelayMs" : 250
+          }
+        },
+        "tlsSettings" : {
+          "allowInsecure" : false,
+          "echConfigList" : "cloudflare-ech.com+udp://1.1.1.1",
+          "fingerprint" : "chrome",
+          "serverName" : "pooriared.pooriaultrapanel2.workers.dev",
+          "show" : false
+        },
+        "wsSettings" : {
+          "host" : "pooriared.pooriaultrapanel2.workers.dev",
+          "path" : "/sync"
+        }
+      },
+      "tag" : "proxy"
+    },
+    {
+      "protocol" : "freedom",
+      "streamSettings" : {
+        "network" : "tcp",
+        "sockopt" : {
+          "domainStrategy" : "UseIP"
+        }
+      },
+      "tag" : "direct"
+    },
+    {
+      "protocol" : "blackhole",
+      "settings" : {
+        "response" : {
+          "type" : "none"
+        }
+      },
+      "tag" : "block"
+    }
+  ],
+  "policy" : {
+    "levels" : {
+      "8" : {
+        "bufferSize" : 0,
+        "connIdle" : 30,
+        "downlinkOnly" : 1,
+        "handshake" : 4,
+        "statsUserDownlink" : false,
+        "statsUserUplink" : false,
+        "uplinkOnly" : 1
+      }
+    },
+    "system" : {
+      "statsOutboundDownlink" : true,
+      "statsOutboundUplink" : true
+    }
+  },
+  "remarks" : "POORIARED-ultrapanel",
+  "routing" : {
+    "balancers" : [
 
-vless://53fa8faf-ba4b-4322-9c69-a3e5b1555049@speedtestshomal.up.railway.app:443?type=ws&security=tls&fp=chrome&sni=speedtestshomal.up.railway.app&path=/ws/53fa8faf-ba4b-4322-9c69-a3e5b1555049&host=speedtestshomal.up.railway.app&alpn=http/1.1#%F0%9F%A5%B7%F0%9F%8F%BB%F0%9F%A4%ACPOORIAMRED2
+    ],
+    "domainStrategy" : "AsIs",
+    "rules" : [
+      {
+        "ip" : "8.8.8.8",
+        "outboundTag" : "direct",
+        "port" : "53",
+        "ruleTag" : "rule-0",
+        "type" : "field"
+      },
+      {
+        "ip" : "1.1.1.1",
+        "outboundTag" : "proxy",
+        "port" : "53",
+        "ruleTag" : "rule-1",
+        "type" : "field"
+      },
+      {
+        "inboundTag" : "directSocks",
+        "outboundTag" : "direct",
+        "ruleTag" : "rule-2",
+        "type" : "field"
+      }
+    ]
+  },
+  "stats" : {
 
-vless://53fa8faf-ba4b-4322-9c69-a3e5b1555049@speedtestmazandaran.up.railway.app:443?type=ws&security=tls&fp=chrome&sni=speedtestmazandaran.up.railway.app&path=/ws/53fa8faf-ba4b-4322-9c69-a3e5b1555049&host=speedtestmazandaran.up.railway.app&alpn=http/1.1#%F0%9F%A5%B7%F0%9F%8F%BB%F0%9F%A4%ACPOORIAMRED3
+  }
+}
+{
+  "dns" : {
+    "disableCache" : false,
+    "disableFallback" : false,
+    "disableFallbackIfMatch" : false,
+    "hosts" : {
+      "cloudflare-dns.com" : [
+        "104.16.248.249",
+        "104.16.249.249",
+        "2606:4700::6810:f8f9",
+        "2606:4700::6810:f9f9"
+      ],
+      "common.dot.dns.yandex.net" : [
+        "77.88.8.8",
+        "77.88.8.1",
+        "2a02:6b8::feed:0ff",
+        "2a02:6b8:0:1::feed:0ff"
+      ],
+      "dns.alidns.com" : [
+        "223.5.5.5",
+        "223.6.6.6",
+        "2400:3200::1",
+        "2400:3200:baba::1"
+      ],
+      "dns.cloudflare.com" : [
+        "104.16.132.229",
+        "104.16.133.229",
+        "2606:4700::6810:84e5",
+        "2606:4700::6810:85e5"
+      ],
+      "dns.google" : [
+        "8.8.8.8",
+        "8.8.4.4",
+        "2001:4860:4860::8888",
+        "2001:4860:4860::8844"
+      ],
+      "dns.quad9.net" : [
+        "9.9.9.9",
+        "149.112.112.112",
+        "2620:fe::fe",
+        "2620:fe::9"
+      ],
+      "domain:googleapis.cn" : "googleapis.com",
+      "dot.pub" : [
+        "1.12.12.12",
+        "120.53.53.53"
+      ],
+      "one.one.one.one" : [
+        "1.1.1.1",
+        "1.0.0.1",
+        "2606:4700:4700::1111",
+        "2606:4700:4700::1001"
+      ],
+      "www.speedtest.net" : "240.0.0.15"
+    },
+    "queryStrategy" : "UseIP",
+    "servers" : [
+      "1.1.1.1"
+    ],
+    "tag" : "076248DE-9447-4ED2-BCC8-0355637305A8"
+  },
+  "inbounds" : [
+    {
+      "listen" : "127.0.0.1",
+      "port" : 62123,
+      "protocol" : "socks",
+      "settings" : {
+        "auth" : "noauth",
+        "udp" : true,
+        "userLevel" : 8
+      },
+      "sniffing" : {
+        "destOverride" : [
+          "tls",
+          "http",
+          "quic"
+        ],
+        "enabled" : true,
+        "metadataOnly" : false,
+        "routeOnly" : false
+      },
+      "tag" : "socks"
+    },
+    {
+      "listen" : "127.0.0.1",
+      "port" : 62124,
+      "protocol" : "socks",
+      "settings" : {
+        "auth" : "noauth",
+        "udp" : true,
+        "userLevel" : 8
+      },
+      "tag" : "directSocks"
+    }
+  ],
+  "log" : {
+    "access" : "/private/var/mobile/Containers/Shared/AppGroup/979E9E00-FD9D-40E5-8A0C-86B7202C6120/access.log",
+    "dnsLog" : false,
+    "error" : "/private/var/mobile/Containers/Shared/AppGroup/979E9E00-FD9D-40E5-8A0C-86B7202C6120/error.log",
+    "loglevel" : "warning"
+  },
+  "outbounds" : [
+    {
+      "mux" : {
+        "concurrency" : -1,
+        "enabled" : false
+      },
+      "protocol" : "VLESS",
+      "settings" : {
+        "vnext" : [
+          {
+            "address" : "www.speedtest.net",
+            "port" : 443,
+            "users" : [
+              {
+                "encryption" : "none",
+                "id" : "91eae6c4-f4de-b91c-3a81-9ac2e3000b99",
+                "level" : 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings" : {
+        "network" : "ws",
+        "security" : "tls",
+        "sockopt" : {
+          "domainStrategy" : "UseIP",
+          "happyEyeballs" : {
+            "interleave" : 2,
+            "maxConcurrentTry" : 4,
+            "prioritizeIPv6" : true,
+            "tryDelayMs" : 250
+          }
+        },
+        "tlsSettings" : {
+          "allowInsecure" : false,
+          "echConfigList" : "cloudflare-ech.com+udp://1.1.1.1",
+          "fingerprint" : "chrome",
+          "serverName" : "pooriared.pooriaultrapanel3.workers.dev",
+          "show" : false
+        },
+        "wsSettings" : {
+          "host" : "pooriared.pooriaultrapanel3.workers.dev",
+          "path" : "/sync"
+        }
+      },
+      "tag" : "proxy"
+    },
+    {
+      "protocol" : "freedom",
+      "streamSettings" : {
+        "network" : "tcp",
+        "sockopt" : {
+          "domainStrategy" : "UseIP"
+        }
+      },
+      "tag" : "direct"
+    },
+    {
+      "protocol" : "blackhole",
+      "settings" : {
+        "response" : {
+          "type" : "none"
+        }
+      },
+      "tag" : "block"
+    }
+  ],
+  "policy" : {
+    "levels" : {
+      "8" : {
+        "bufferSize" : 0,
+        "connIdle" : 30,
+        "downlinkOnly" : 1,
+        "handshake" : 4,
+        "statsUserDownlink" : false,
+        "statsUserUplink" : false,
+        "uplinkOnly" : 1
+      }
+    },
+    "system" : {
+      "statsOutboundDownlink" : true,
+      "statsOutboundUplink" : true
+    }
+  },
+  "remarks" : "POORIARED-ultrapanel1",
+  "routing" : {
+    "balancers" : [
 
-vless://d9ad5acb-f0c1-4d11-a122-878b70f34201@mazandaran.up.railway.app:443?type=ws&security=tls&fp=chrome&sni=mazandaran.up.railway.app&path=/ws/d9ad5acb-f0c1-4d11-a122-878b70f34201&host=mazandaran.up.railway.app&alpn=http/1.1#%D8%AD%D8%AA%D9%85%D8%A7%20%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87%20incy%20%D8%B1%D9%88%20%D9%86%D8%B5%D8%A8%20%DA%A9%D9%86%DB%8C%D8%AF
+    ],
+    "domainStrategy" : "AsIs",
+    "rules" : [
+      {
+        "ip" : "8.8.8.8",
+        "outboundTag" : "direct",
+        "port" : "53",
+        "ruleTag" : "rule-0",
+        "type" : "field"
+      },
+      {
+        "ip" : "1.1.1.1",
+        "outboundTag" : "proxy",
+        "port" : "53",
+        "ruleTag" : "rule-1",
+        "type" : "field"
+      },
+      {
+        "inboundTag" : "directSocks",
+        "outboundTag" : "direct",
+        "ruleTag" : "rule-2",
+        "type" : "field"
+      }
+    ]
+  },
+  "stats" : {
 
-vless://77e56770-4f89-4abf-8bce-976074c7ee59@snappgvbjjvdssdfggfewdvnmkh2467werffyyeeeewhk-production-2165.up.railway.app:443?type=ws&security=tls&fp=chrome&sni=snappgvbjjvdssdfggfewdvnmkh2467werffyyeeeewhk-production-2165.up.railway.app&path=/ws/77e56770-4f89-4abf-8bce-976074c7ee59&host=snappgvbjjvdssdfggfewdvnmkh2467werffyyeeeewhk-production-2165.up.railway.app&alpn=http/1.1#%D8%AD%D8%AA%D9%85%D8%A7%20%D9%84%DB%8C%D9%86%DA%A9%20%D8%B1%D9%88%20%D8%AA%D9%88%20%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87%20incy%20%D8%A8%D8%B2%D9%86%DB%8C%D8%AF
+  }
+}
+{
+  "dns" : {
+    "disableCache" : false,
+    "disableFallback" : false,
+    "disableFallbackIfMatch" : false,
+    "hosts" : {
+      "cloudflare-dns.com" : [
+        "104.16.248.249",
+        "104.16.249.249",
+        "2606:4700::6810:f8f9",
+        "2606:4700::6810:f9f9"
+      ],
+      "common.dot.dns.yandex.net" : [
+        "77.88.8.8",
+        "77.88.8.1",
+        "2a02:6b8::feed:0ff",
+        "2a02:6b8:0:1::feed:0ff"
+      ],
+      "dns.alidns.com" : [
+        "223.5.5.5",
+        "223.6.6.6",
+        "2400:3200::1",
+        "2400:3200:baba::1"
+      ],
+      "dns.cloudflare.com" : [
+        "104.16.132.229",
+        "104.16.133.229",
+        "2606:4700::6810:84e5",
+        "2606:4700::6810:85e5"
+      ],
+      "dns.google" : [
+        "8.8.8.8",
+        "8.8.4.4",
+        "2001:4860:4860::8888",
+        "2001:4860:4860::8844"
+      ],
+      "dns.quad9.net" : [
+        "9.9.9.9",
+        "149.112.112.112",
+        "2620:fe::fe",
+        "2620:fe::9"
+      ],
+      "domain:googleapis.cn" : "googleapis.com",
+      "dot.pub" : [
+        "1.12.12.12",
+        "120.53.53.53"
+      ],
+      "one.one.one.one" : [
+        "1.1.1.1",
+        "1.0.0.1",
+        "2606:4700:4700::1111",
+        "2606:4700:4700::1001"
+      ],
+      "www.speedtest.net" : "240.0.0.15"
+    },
+    "queryStrategy" : "UseIP",
+    "servers" : [
+      "1.1.1.1"
+    ],
+    "tag" : "C08C1CE0-F823-44E4-B24A-6D61A168B8FC"
+  },
+  "inbounds" : [
+    {
+      "listen" : "127.0.0.1",
+      "port" : 62161,
+      "protocol" : "socks",
+      "settings" : {
+        "auth" : "noauth",
+        "udp" : true,
+        "userLevel" : 8
+      },
+      "sniffing" : {
+        "destOverride" : [
+          "tls",
+          "http",
+          "quic"
+        ],
+        "enabled" : true,
+        "metadataOnly" : false,
+        "routeOnly" : false
+      },
+      "tag" : "socks"
+    },
+    {
+      "listen" : "127.0.0.1",
+      "port" : 62162,
+      "protocol" : "socks",
+      "settings" : {
+        "auth" : "noauth",
+        "udp" : true,
+        "userLevel" : 8
+      },
+      "tag" : "directSocks"
+    }
+  ],
+  "log" : {
+    "access" : "/private/var/mobile/Containers/Shared/AppGroup/979E9E00-FD9D-40E5-8A0C-86B7202C6120/access.log",
+    "dnsLog" : false,
+    "error" : "/private/var/mobile/Containers/Shared/AppGroup/979E9E00-FD9D-40E5-8A0C-86B7202C6120/error.log",
+    "loglevel" : "warning"
+  },
+  "outbounds" : [
+    {
+      "mux" : {
+        "concurrency" : -1,
+        "enabled" : false
+      },
+      "protocol" : "VLESS",
+      "settings" : {
+        "vnext" : [
+          {
+            "address" : "www.speedtest.net",
+            "port" : 443,
+            "users" : [
+              {
+                "encryption" : "none",
+                "id" : "91eae6c4-f4de-b91c-3a81-9ac2e3000b99",
+                "level" : 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings" : {
+        "network" : "ws",
+        "security" : "tls",
+        "sockopt" : {
+          "domainStrategy" : "UseIP",
+          "happyEyeballs" : {
+            "interleave" : 2,
+            "maxConcurrentTry" : 4,
+            "prioritizeIPv6" : true,
+            "tryDelayMs" : 250
+          }
+        },
+        "tlsSettings" : {
+          "allowInsecure" : false,
+          "echConfigList" : "cloudflare-ech.com+udp://1.1.1.1",
+          "fingerprint" : "chrome",
+          "serverName" : "pooriared.pooriaultrapanell1.workers.dev",
+          "show" : false
+        },
+        "wsSettings" : {
+          "host" : "pooriared.pooriaultrapanell1.workers.dev",
+          "path" : "/sync"
+        }
+      },
+      "tag" : "proxy"
+    },
+    {
+      "protocol" : "freedom",
+      "streamSettings" : {
+        "network" : "tcp",
+        "sockopt" : {
+          "domainStrategy" : "UseIP"
+        }
+      },
+      "tag" : "direct"
+    },
+    {
+      "protocol" : "blackhole",
+      "settings" : {
+        "response" : {
+          "type" : "none"
+        }
+      },
+      "tag" : "block"
+    }
+  ],
+  "policy" : {
+    "levels" : {
+      "8" : {
+        "bufferSize" : 0,
+        "connIdle" : 30,
+        "downlinkOnly" : 1,
+        "handshake" : 4,
+        "statsUserDownlink" : false,
+        "statsUserUplink" : false,
+        "uplinkOnly" : 1
+      }
+    },
+    "system" : {
+      "statsOutboundDownlink" : true,
+      "statsOutboundUplink" : true
+    }
+  },
+  "remarks" : "POORIARED-ultrapanel2",
+  "routing" : {
+    "balancers" : [
 
-vless://0b2042fc-c5ac-8282-d0eb-de937979831c@iranishop.redorg1.ir:443?type=ws&security=tls&fp=chrome&sni=iranishop3.pooriashop3-534.workers.dev&path=/sync&host=iranishop3.pooriashop3-534.workers.dev&fm=%7B%22tcp%22:%5B%7B%22type%22:%22fragment%22,%22settings%22:%7B%22packets%22:%22tlshello%22,%22lengths%22:%5B%220%22,%22104%22,%221%22%5D,%22delays%22:%5B%220%22%5D,%22maxSplit%22:%220%22%7D%7D,%7B%22type%22:%22fragment%22,%22settings%22:%7B%22packets%22:%221-1%22,%22lengths%22:%5B%22114%22,%221%22%5D,%22delays%22:%5B%221%22%5D,%22maxSplit%22:%2211%22%7D%7D%5D%7D#%DA%A9%D8%A7%D9%86%D9%81%DB%8C%DA%AF%20%D9%85%D9%88%D9%82%D8%AA%20pooria%203
+    ],
+    "domainStrategy" : "AsIs",
+    "rules" : [
+      {
+        "ip" : "8.8.8.8",
+        "outboundTag" : "direct",
+        "port" : "53",
+        "ruleTag" : "rule-0",
+        "type" : "field"
+      },
+      {
+        "ip" : "1.1.1.1",
+        "outboundTag" : "proxy",
+        "port" : "53",
+        "ruleTag" : "rule-1",
+        "type" : "field"
+      },
+      {
+        "inboundTag" : "directSocks",
+        "outboundTag" : "direct",
+        "ruleTag" : "rule-2",
+        "type" : "field"
+      }
+    ]
+  },
+  "stats" : {
 
-vless://0b2042fc-c5ac-8282-d0eb-de937979831c@iranishop.redorg1.ir:443?type=ws&security=tls&fp=chrome&sni=iranishop7.pooriashop7-1c1.workers.dev&path=/sync&host=iranishop7.pooriashop7-1c1.workers.dev&fm=%7B%22tcp%22:%5B%7B%22type%22:%22fragment%22,%22settings%22:%7B%22packets%22:%22tlshello%22,%22lengths%22:%5B%220%22,%22104%22,%221%22%5D,%22delays%22:%5B%220%22%5D,%22maxSplit%22:%220%22%7D%7D,%7B%22type%22:%22fragment%22,%22settings%22:%7B%22packets%22:%221-1%22,%22lengths%22:%5B%22114%22,%221%22%5D,%22delays%22:%5B%221%22%5D,%22maxSplit%22:%2211%22%7D%7D%5D%7D#%DA%A9%D8%A7%D9%86%D9%81%DB%8C%DA%AF%20%D9%85%D9%88%D9%82%D8%AA%20pooria%207
+  }
+}
+{
+  "dns" : {
+    "disableCache" : false,
+    "disableFallback" : false,
+    "disableFallbackIfMatch" : false,
+    "hosts" : {
+      "cloudflare-dns.com" : [
+        "104.16.248.249",
+        "104.16.249.249",
+        "2606:4700::6810:f8f9",
+        "2606:4700::6810:f9f9"
+      ],
+      "common.dot.dns.yandex.net" : [
+        "77.88.8.8",
+        "77.88.8.1",
+        "2a02:6b8::feed:0ff",
+        "2a02:6b8:0:1::feed:0ff"
+      ],
+      "dns.alidns.com" : [
+        "223.5.5.5",
+        "223.6.6.6",
+        "2400:3200::1",
+        "2400:3200:baba::1"
+      ],
+      "dns.cloudflare.com" : [
+        "104.16.132.229",
+        "104.16.133.229",
+        "2606:4700::6810:84e5",
+        "2606:4700::6810:85e5"
+      ],
+      "dns.google" : [
+        "8.8.8.8",
+        "8.8.4.4",
+        "2001:4860:4860::8888",
+        "2001:4860:4860::8844"
+      ],
+      "dns.quad9.net" : [
+        "9.9.9.9",
+        "149.112.112.112",
+        "2620:fe::fe",
+        "2620:fe::9"
+      ],
+      "domain:googleapis.cn" : "googleapis.com",
+      "dot.pub" : [
+        "1.12.12.12",
+        "120.53.53.53"
+      ],
+      "one.one.one.one" : [
+        "1.1.1.1",
+        "1.0.0.1",
+        "2606:4700:4700::1111",
+        "2606:4700:4700::1001"
+      ],
+      "www.speedtest.net" : "240.0.0.15"
+    },
+    "queryStrategy" : "UseIP",
+    "servers" : [
+      "1.1.1.1"
+    ],
+    "tag" : "E3DF70D7-D95A-4F21-828E-5E17718169C3"
+  },
+  "inbounds" : [
+    {
+      "listen" : "127.0.0.1",
+      "port" : 62187,
+      "protocol" : "socks",
+      "settings" : {
+        "auth" : "noauth",
+        "udp" : true,
+        "userLevel" : 8
+      },
+      "sniffing" : {
+        "destOverride" : [
+          "tls",
+          "http",
+          "quic"
+        ],
+        "enabled" : true,
+        "metadataOnly" : false,
+        "routeOnly" : false
+      },
+      "tag" : "socks"
+    },
+    {
+      "listen" : "127.0.0.1",
+      "port" : 62188,
+      "protocol" : "socks",
+      "settings" : {
+        "auth" : "noauth",
+        "udp" : true,
+        "userLevel" : 8
+      },
+      "tag" : "directSocks"
+    }
+  ],
+  "log" : {
+    "access" : "/private/var/mobile/Containers/Shared/AppGroup/979E9E00-FD9D-40E5-8A0C-86B7202C6120/access.log",
+    "dnsLog" : false,
+    "error" : "/private/var/mobile/Containers/Shared/AppGroup/979E9E00-FD9D-40E5-8A0C-86B7202C6120/error.log",
+    "loglevel" : "warning"
+  },
+  "outbounds" : [
+    {
+      "mux" : {
+        "concurrency" : -1,
+        "enabled" : false
+      },
+      "protocol" : "VLESS",
+      "settings" : {
+        "vnext" : [
+          {
+            "address" : "www.speedtest.net",
+            "port" : 443,
+            "users" : [
+              {
+                "encryption" : "none",
+                "id" : "91eae6c4-f4de-b91c-3a81-9ac2e3000b99",
+                "level" : 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings" : {
+        "network" : "ws",
+        "security" : "tls",
+        "sockopt" : {
+          "domainStrategy" : "UseIP",
+          "happyEyeballs" : {
+            "interleave" : 2,
+            "maxConcurrentTry" : 4,
+            "prioritizeIPv6" : true,
+            "tryDelayMs" : 250
+          }
+        },
+        "tlsSettings" : {
+          "allowInsecure" : false,
+          "echConfigList" : "cloudflare-ech.com+udp://1.1.1.1",
+          "fingerprint" : "chrome",
+          "serverName" : "pooriared.pooriaultrapanel.workers.dev",
+          "show" : false
+        },
+        "wsSettings" : {
+          "host" : "pooriared.pooriaultrapanel.workers.dev",
+          "path" : "/sync"
+        }
+      },
+      "tag" : "proxy"
+    },
+    {
+      "protocol" : "freedom",
+      "streamSettings" : {
+        "network" : "tcp",
+        "sockopt" : {
+          "domainStrategy" : "UseIP"
+        }
+      },
+      "tag" : "direct"
+    },
+    {
+      "protocol" : "blackhole",
+      "settings" : {
+        "response" : {
+          "type" : "none"
+        }
+      },
+      "tag" : "block"
+    }
+  ],
+  "policy" : {
+    "levels" : {
+      "8" : {
+        "bufferSize" : 0,
+        "connIdle" : 30,
+        "downlinkOnly" : 1,
+        "handshake" : 4,
+        "statsUserDownlink" : false,
+        "statsUserUplink" : false,
+        "uplinkOnly" : 1
+      }
+    },
+    "system" : {
+      "statsOutboundDownlink" : true,
+      "statsOutboundUplink" : true
+    }
+  },
+  "remarks" : "POORIARED-ultrapanel3",
+  "routing" : {
+    "balancers" : [
 
-vless://0b2042fc-c5ac-8282-d0eb-de937979831c@iranishop.redorg1.ir:443?type=ws&security=tls&fp=chrome&sni=iranishop10.pooriashop10-983.workers.dev&path=/sync&host=iranishop10.pooriashop10-983.workers.dev&fm=%7B%22tcp%22:%5B%7B%22type%22:%22fragment%22,%22settings%22:%7B%22packets%22:%22tlshello%22,%22lengths%22:%5B%220%22,%22104%22,%221%22%5D,%22delays%22:%5B%220%22%5D,%22maxSplit%22:%220%22%7D%7D,%7B%22type%22:%22fragment%22,%22settings%22:%7B%22packets%22:%221-1%22,%22lengths%22:%5B%22114%22,%221%22%5D,%22delays%22:%5B%221%22%5D,%22maxSplit%22:%2211%22%7D%7D%5D%7D#%DA%A9%D8%A7%D9%86%D9%81%DB%8C%DA%AF%20%D9%85%D9%88%D9%82%D8%AA%20pooria%2010
+    ],
+    "domainStrategy" : "AsIs",
+    "rules" : [
+      {
+        "ip" : "8.8.8.8",
+        "outboundTag" : "direct",
+        "port" : "53",
+        "ruleTag" : "rule-0",
+        "type" : "field"
+      },
+      {
+        "ip" : "1.1.1.1",
+        "outboundTag" : "proxy",
+        "port" : "53",
+        "ruleTag" : "rule-1",
+        "type" : "field"
+      },
+      {
+        "inboundTag" : "directSocks",
+        "outboundTag" : "direct",
+        "ruleTag" : "rule-2",
+        "type" : "field"
+      }
+    ]
+  },
+  "stats" : {
+
+  }
+}
+Vless://53fa8faf-ba4b-4322-9c69-a3e5b1555049@speedtestmazandaran.up.railway.app:443?type=ws&security=tls&fp=chrome&sni=speedtestmazandaran.up.railway.app&path=/ws/53fa8faf-ba4b-4322-9c69-a3e5b1555049&host=speedtestmazandaran.up.railway.app&alpn=http/1.1#%F0%9F%A5%B7%F0%9F%8F%BB%F0%9F%A4%ACPOORIAMRED3
+Vless://d9ad5acb-f0c1-4d11-a122-878b70f34201@mazandaran.up.railway.app:443?type=ws&security=tls&fp=chrome&sni=mazandaran.up.railway.app&path=/ws/d9ad5acb-f0c1-4d11-a122-878b70f34201&host=mazandaran.up.railway.app&alpn=http/1.1#%D8%AD%D8%AA%D9%85%D8%A7%20%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87%20incy%20%D8%B1%D9%88%20%D9%86%D8%B5%D8%A8%20%DA%A9%D9%86%DB%8C%D8%AF
+Vless://77e56770-4f89-4abf-8bce-976074c7ee59@snappgvbjjvdssdfggfewdvnmkh2467werffyyeeeewhk-production-2165.up.railway.app:443?type=ws&security=tls&fp=chrome&sni=snappgvbjjvdssdfggfewdvnmkh2467werffyyeeeewhk-production-2165.up.railway.app&path=/ws/77e56770-4f89-4abf-8bce-976074c7ee59&host=snappgvbjjvdssdfggfewdvnmkh2467werffyyeeeewhk-production-2165.up.railway.app&alpn=http/1.1#%D8%AD%D8%AA%D9%85%D8%A7%20%D9%84%DB%8C%D9%86%DA%A9%20%D8%B1%D9%88%20%D8%AA%D9%88%20%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87%20incy%20%D8%B2%D9%86%DB%8C%D8%AF
